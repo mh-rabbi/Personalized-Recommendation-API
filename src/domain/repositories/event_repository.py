@@ -28,23 +28,31 @@ class EventRepository(ABC):
         pass
 
     @abstractmethod
-    def get_top_products_global(self, limit: int) -> List[tuple]:
+    def get_top_products_global(self, limit: int, shop_id: Optional[int] = None) -> List[tuple]:
         pass
 
     @abstractmethod
-    def get_top_products_by_segment(self, age_group: str, gender: str, limit: int) -> List[tuple]:
+    def get_top_products_by_segment(self, age_group: str, gender: str, limit: int, shop_id: Optional[int] = None) -> List[tuple]:
         pass
 
     @abstractmethod
-    def get_top_products_by_user(self, user_id: int, limit: int) -> List[tuple]:
+    def get_top_products_by_user(self, user_id: int, limit: int, shop_id: Optional[int] = None) -> List[tuple]:
         pass
 
     @abstractmethod
-    def get_top_categories_by_user(self, user_id: int, limit: int) -> List[tuple]:
+    def get_top_categories_by_user(self, user_id: int, limit: int, shop_id: Optional[int] = None) -> List[tuple]:
         pass
 
     @abstractmethod
-    def get_top_products_by_categories(self, category_ids: List[int], limit: int) -> List[tuple]:
+    def get_top_products_by_categories(self, category_ids: List[int], limit: int, shop_id: Optional[int] = None) -> List[tuple]:
+        pass
+    
+    @abstractmethod
+    def get_trending_products(self, limit: int, days: int = 30, shop_id: Optional[int] = None) -> List[tuple]:
+        pass
+
+    @abstractmethod
+    def get_best_sellers(self, limit: int, shop_id: Optional[int] = None) -> List[tuple]:
         pass
 
     @abstractmethod
