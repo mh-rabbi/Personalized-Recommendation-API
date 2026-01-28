@@ -1,7 +1,7 @@
 """Main application entry point."""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.presentation.api.routes import product_routes
+from src.presentation.api.routes import product_routes, recommendation_routes
 from src.infrastructure.database.config import init_db
 
 # Initialize database tables
@@ -25,6 +25,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(product_routes.router, prefix="/api/v1")
+app.include_router(recommendation_routes.router, prefix="/api/v1")
 
 
 @app.get("/")
